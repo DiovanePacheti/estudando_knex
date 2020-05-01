@@ -27,9 +27,11 @@ module.exports ={
 	async update(request, response, next){
 		try{
 			const {username} = request.body;
-			const id = request.headers.authorization;
+			const {id} = request.params
 
-			await knex('users').update({username}).where('id',id);
+			await knex('users')
+			.update({username})
+			.where({id});
 
 			return response.send()
 		}catch(error){
@@ -40,9 +42,9 @@ module.exports ={
 	async delete(request, response, next){
 		try{
 
-			const id = request.headers.authorization;
+			const {id} = request.params;
 			console.log(id)
-			await knex('users').where('id',id).update('deleted_at', new Date());
+			await knex('users').where({id}).update('deleted_at', new Date());
 
 			return response.status().send();
 
