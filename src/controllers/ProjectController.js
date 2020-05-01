@@ -13,14 +13,14 @@ module.exports = {
 
 			if(user_id){//se o user_if true
 				query
-					.where({user_id})//retorna onde id for igual {user_id :user_id}
-					//trabalha com a tabela users quando verificado os ids das tabelas
-					.join('users', 'users.id', '=', 'projects.user_id')
-					.select(['projects.*','users.username'])
-
+				.where({user_id})//retorna onde id for igual {user_id :user_id}
+				//trabalha com a tabela users quando verificado os ids das tabelas
+				.join('users', 'users.id', '=', 'projects.user_id')
+				.select(['projects.*','users.username'])
+				.where('users.deleted_at', null)//traga quando este campo for null na tabela user
 				//calcular o total de requitro do id referente	
 				countObj
-					.where({user_id})
+				.where({user_id})
 			}
 
 			const [count] = await countObj;

@@ -4,7 +4,7 @@ module.exports ={
 
 	async index(request, response){
 
-		const user = await knex('users').select('*');
+		const user = await knex('users').where('deleted_at', null);
 
 		return response.json(user);
 
