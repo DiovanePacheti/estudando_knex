@@ -8,6 +8,13 @@ app.use(express.json());//definindo json nas rotas
 
 app.use(routes);//rotas usadas
 
+//error 404 notFound
+app.use((request, response, next) => {
+	const error = new Error('Not found')
+	error.status = 404 //atribuind ao status
+	next(error)
+});
+
 //cath all middlewares
 app.use((error,request,response,next) => {
 	response.status(error.status || 500)

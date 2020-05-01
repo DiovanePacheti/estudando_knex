@@ -1,5 +1,5 @@
 const express = require('express');
-
+const ProjectController = require('./controllers/ProjectController');
 const UserController = require('./controllers/UserController');
 const routes = express.Router();
 
@@ -11,5 +11,7 @@ routes
 	.post('/user', UserController.create)
 	.put('/user', UserController.update)
 	.delete('/user', UserController.delete)
+	//Projcts
+	.get('/project', ProjectController.index)
 
 module.exports = routes;
