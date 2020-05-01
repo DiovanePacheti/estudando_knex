@@ -23,6 +23,25 @@ module.exports = {
 		}catch(error){
 			next(error)
 		}
+	},
+
+	async create(request, response, next){
+		try{
+
+			const {title} = request.body;
+			const user_id = request.headers.authorization;
+
+			await knex('projects').insert({
+				title,
+				user_id
+
+			});
+
+			return response.status(201).send()
+
+		}catch(error){
+			next(error);
+		}
 	}
 
 };
