@@ -2,7 +2,7 @@ const express = require('express');//importando o modulo
 
 const app = express(); //atribuindo a função express
 
-const routes = require('/.routes'); //importando o arquivo routes 
+const routes = require('./routes'); //importando o arquivo routes 
 
 app.use(express.json());//definindo json nas rotas
 
