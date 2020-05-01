@@ -8,6 +8,17 @@ module.exports ={
 
 		return response.json(user);
 
+	},
+
+	async create(request, response){
+
+		const {username} = request.body;
+
+		const id = await knex('users').insert({
+			username
+		});
+
+		return response.json();
 	}
 
 };

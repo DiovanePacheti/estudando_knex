@@ -5,6 +5,9 @@ const routes = express.Router();
 
 
 
-routes.get('/user', UserController.index);
+routes
+	//User
+	.get('/user', UserController.index)
+	.post('/user', UserController.create);
 
 module.exports = routes;
