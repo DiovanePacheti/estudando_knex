@@ -41,8 +41,8 @@ module.exports ={
 		try{
 
 			const id = request.headers.authorization;
-
-			await knex('users').where('id',id).delete();
+			console.log(id)
+			await knex('users').where('id',id).update('deleted_at', new Date());
 
 			return response.status().send();
 
